@@ -113,9 +113,9 @@
 }
 
 .introduction-footer {
-  padding-bottom: 40px;
+  border-bottom: 2px solid black;
+  margin-bottom: 50px;
   padding-top: 80px;
-  margin: 0 auto;
 }
 
 .copy-write {
@@ -124,8 +124,4 @@
 
 .copy-write > p {
   font-size: 10px;
-}
-
-.underline {
-  border-bottom: 2px solid black;
 }
