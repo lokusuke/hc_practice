@@ -33,15 +33,10 @@
   margin: 0 auto;
 }
 
-.resume-image {
+.resume-image img {
   width: 100%;
   height: 600px;
   padding-bottom: 40px;
-}
-
-.resume-image img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -118,10 +113,7 @@
   padding-top: 80px;
 }
 
-.copy-write {
+.introduction-footer > p {
   text-align: center;
-}
-
-.copy-write > p {
   font-size: 10px;
 }
