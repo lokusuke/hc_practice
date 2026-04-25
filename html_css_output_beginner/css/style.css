@@ -117,3 +117,30 @@
   text-align: center;
   font-size: 10px;
 }
+
+/* スマホ版対応(幅:600px以下) */
+@media (max-width: 600px) {
+  .introduction-header {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: auto;
+  }
+  .introduction-section {
+    width: auto;
+  }
+  .message {
+    display: flex;
+    flex-direction: column;
+  }
+  .message h4 {
+    text-align: center;
+  }
+  .profile-image-section {
+    width: auto;
+  }
+  .profile-image-boxes {
+    display: flex;
+    flex-direction: column;
+  }
+}
