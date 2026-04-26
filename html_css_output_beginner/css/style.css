@@ -1,6 +1,8 @@
 .introduction-page {
-  width: 100%;
   min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 4%;
+  width: 960px;
 }
 
 .introduction-header {
@@ -26,18 +28,18 @@
   list-style: none;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 4%;
-  width: 960px;
-}
-
 .container h2 {
   border-bottom: 2px solid black;
   font-size: 30px;
   margin: 0 auto;
   padding-bottom: 5px;
   width: fit-content;
+}
+
+.resume-image {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .resume-image img {
@@ -100,10 +102,10 @@
 
 /* スマホ版対応(幅:600px以下) */
 @media (max-width: 600px) {
-  .introduction-header,
-  .container {
+  .introduction-page {
     width: auto;
   }
+
   .introduction-header {
     justify-content: center;
   }
