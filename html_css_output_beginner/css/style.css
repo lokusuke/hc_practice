@@ -4,12 +4,9 @@
 }
 
 .introduction-header {
-  width: 960px;
-  margin: 0 auto;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 4%;
 }
 
 .resume {
@@ -29,13 +26,13 @@
   list-style: none;
 }
 
-.main-contents {
+.container {
   margin: 0 auto;
   padding: 0 4%;
   width: 960px;
 }
 
-.main-contents h2 {
+.container h2 {
   border-bottom: 2px solid black;
   font-size: 30px;
   margin: 0 auto;
@@ -55,14 +52,6 @@
   padding-top: 40px;
 }
 
-/* .introduction-section h2 {
-  border-bottom: 2px solid black;
-  font-size: 30px;
-  margin: 0 auto;
-  padding-bottom: 2px;
-  width: fit-content;
-} */
-
 .message {
   align-items: center;
   display: flex;
@@ -81,14 +70,6 @@
   padding-bottom: 40px;
   padding-top: 40px;
 }
-
-/* .profile-image-section h2 {
-  border-bottom: 2px solid black;
-  font-size: 30px;
-  margin: 0 auto;
-  padding-bottom: 2px;
-  width: fit-content;
-} */
 
 .profile-image-boxes {
   align-items: center;
@@ -121,7 +102,7 @@
 /* スマホ版対応(幅:600px以下) */
 @media (max-width: 600px) {
   .introduction-header,
-  .main-contents {
+  .container {
     width: auto;
   }
   .introduction-header {
