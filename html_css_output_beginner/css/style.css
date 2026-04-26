@@ -31,6 +31,16 @@
 
 .main-contents {
   margin: 0 auto;
+  padding: 0 4%;
+  width: 960px;
+}
+
+.main-contents h2 {
+  border-bottom: 2px solid black;
+  font-size: 30px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  width: fit-content;
 }
 
 .resume-image img {
@@ -41,21 +51,17 @@
 }
 
 .introduction-section {
-  margin: 0 auto;
   padding-bottom: 40px;
   padding-top: 40px;
-  padding-left: 4%;
-  padding-right: 4%;
-  width: 960px;
 }
 
-.introduction-section h3 {
+/* .introduction-section h2 {
   border-bottom: 2px solid black;
   font-size: 30px;
   margin: 0 auto;
   padding-bottom: 2px;
   width: fit-content;
-}
+} */
 
 .message {
   align-items: center;
@@ -63,8 +69,6 @@
   gap: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 4%;
-  padding-right: 4%;
 }
 
 .image-circle img {
@@ -74,21 +78,17 @@
 }
 
 .profile-image-section {
-  margin: 0 auto;
   padding-bottom: 40px;
   padding-top: 40px;
-  padding-left: 4%;
-  padding-right: 4%;
-  width: 960px;
 }
 
-.profile-image-section h3 {
+/* .profile-image-section h2 {
   border-bottom: 2px solid black;
   font-size: 30px;
   margin: 0 auto;
   padding-bottom: 2px;
   width: fit-content;
-}
+} */
 
 .profile-image-boxes {
   align-items: center;
@@ -121,8 +121,7 @@
 /* スマホ版対応(幅:600px以下) */
 @media (max-width: 600px) {
   .introduction-header,
-  .introduction-section,
-  .profile-image-section {
+  .main-contents {
     width: auto;
   }
   .introduction-header {
