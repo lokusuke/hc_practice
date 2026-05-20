@@ -59,6 +59,8 @@ deleted_at {label: "datetime, null"}
 created_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
+## ToDo: ダイレクトメッセージを送る、通知を送るテーブルを作成
+
 # Cardinality    Syntax
 # 0 or 1         ?
 # exactly 1      1
