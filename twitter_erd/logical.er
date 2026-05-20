@@ -1,0 +1,87 @@
+[users]
+*id {label: "bigint, not null"}
+user_name {label: "varchar(50), not null, uniq"}
+password_hashed {label: "varchar(255), not null"}
+full_name {label: "varchar(100), null"}
+phone_number {label: "varchar(255), null"}
+email {label: "varchar(255), not null, uniq"}
+location {label: "varchar(255), null"}
+website_url {label: "varchar(255), null"}
+birth_date {label: "date, null"}
+profile_image_url {label: "varchar(255), null"}
+avatar_image_url {label: "varchar(255), null"}
+introduction_message {label: "varchar(200), null"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deactivated_at {label: "datetime, null"}
+
+[tweets]
+*id {label: "bigint, not null"}
++from_user_id {label: "bigint, not null"}
++to_user_id {label: "bigint, null"}
++reply_to_id {label: "bigint, null"}
+content {label: "varchar(140), not null"}
+created_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[likes]
+*id {label: "bigint, not null"}
++tweet_id {label: "bigint, not null"}
++user_id {label: "bigint, not null"}
+created_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[retweets]
+*id {label: "bigint, not null"}
++tweet_id {label: "bigint, not null"}
++user_id {label: "bigint, not null"}
+created_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[bookmarks]
+*id {label: "bigint, not null"}
++tweet_id {label: "bigint, not null"}
++user_id {label: "bigint, not null"}
+created_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[follows]
+*id {label: "bigint, not null"}
++user_id {label: "bigint, not null"}
++followed_user_id {label: "bigint, not null"}
+created_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[blocks]
+*id {label: "bigint, not null"}
++user_id {label: "bigint, not null"}
++blocked_user_id {label: "bigint, not null"}
+created_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+# Cardinality    Syntax
+# 0 or 1         ?
+# exactly 1      1
+# 0 or more      *
+# 1 or more      +
+
+# 1人のユーザーは多のツイートをする
+users 1--* tweets
+
+# 1つのツイートには複数のリプライがある（自己参照型）
+tweets 1--* tweets
+
+# 1人のユーザーは複数のいいねをする
+users 1--* likes
+
+# 1つのツイートには複数のいいねがある
+tweets 1--* likes
+
+# 1つのツイートには複数のリツイートがある
+tweets 1--* retweets
+
+# 1人のユーザーは複数のユーザーをフォローする
+users 1--* follows
+
+# 1人のユーザーは複数のユーザーをブロックする
+users 1--* blocks
