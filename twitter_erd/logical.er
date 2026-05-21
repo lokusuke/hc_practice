@@ -148,7 +148,10 @@ tweets 1--* bookmarks
 users 1--* bookmarks
 
 # 1人のユーザーは複数のユーザーをフォローする
-users 1--* follows
+users 1--* follows {label: "follow_user"}
+
+# 1人のユーザーは複数のユーザーからフォローされる
+users 1--* follows {label: "followed_user"}
 
 # 1人のユーザーは複数のユーザーをブロックする
 users 1--* blocks
