@@ -8,8 +8,8 @@ email {label: "varchar(255), not null, uniq"}
 location {label: "varchar(255), null"}
 website_url {label: "varchar(255), null"}
 birth_date {label: "date, null"}
-profile_image_url {label: "varchar(255), null, uniq"}
-avatar_image_url {label: "varchar(255), null, uniq"}
+profile_image_url {label: "varchar(255), null"}
+avatar_image_url {label: "varchar(255), null"}
 introduction_message {label: "varchar(200), null"}
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
