@@ -22,6 +22,7 @@ deactivated_at {label: "datetime, null"}
 +reply_to_id {label: "bigint, null"}
 content {label: "varchar(140), not null"}
 created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [likes]
@@ -29,6 +30,7 @@ deleted_at {label: "datetime, null"}
 +tweet_id {label: "bigint, not null"}
 +user_id {label: "bigint, not null"}
 created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [retweets]
@@ -36,6 +38,7 @@ deleted_at {label: "datetime, null"}
 +tweet_id {label: "bigint, not null"}
 +user_id {label: "bigint, not null"}
 created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [bookmarks]
@@ -43,6 +46,7 @@ deleted_at {label: "datetime, null"}
 +tweet_id {label: "bigint, not null"}
 +user_id {label: "bigint, not null"}
 created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [follows]
@@ -50,6 +54,7 @@ deleted_at {label: "datetime, null"}
 +user_id {label: "bigint, not null"}
 +followed_user_id {label: "bigint, not null"}
 created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [blocks]
@@ -57,6 +62,7 @@ deleted_at {label: "datetime, null"}
 +user_id {label: "bigint, not null"}
 +blocked_user_id {label: "bigint, not null"}
 created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 ## ToDo: ダイレクトメッセージを送る、通知を送るテーブルを作成
