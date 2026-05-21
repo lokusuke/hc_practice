@@ -65,7 +65,7 @@ created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
-[messages]
+[messages] {bgcolor: "#38ebe2"}
 *id {label: "bigint, not null"}
 +chat_group_id {label: "bigint, not null, FK(chat_groups)"}
 +user_id {label: "bigint, not null, FK(users)"}
@@ -75,24 +75,25 @@ created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
-[message_reactions]
+[message_reactions] {bgcolor: "#97dad6"}
 *id {label: "bigint, not null"}
 +message_id {label: "bigint, not null, FK(messages)"}
 +user_id {label: "bigint, not null, FK(users)"}
-+reaction_code {label: "varchar(100), not null" }
++reaction_code {label: "varchar(100), not null" } 
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
-[chat_groups]
+[chat_groups] {bgcolor: "#f5db49"}
 *id {label: "bigint, not null"}
 group_name {label: "varchar(50), not null" }
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
-[chat_group_users]
+[chat_group_users] {bgcolor: "#f3e9b3"}
 *id {label: "bigint, not null"}
++chat_group_id {label: "bigint, not null"}
 +user_id {label: "bigint, not null, FK(users)"}
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
@@ -133,3 +134,4 @@ users 1--* follows
 
 # 1人のユーザーは複数のユーザーをブロックする
 users 1--* blocks
+
