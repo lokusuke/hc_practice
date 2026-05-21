@@ -67,6 +67,26 @@ deleted_at {label: "datetime, null"}
 
 ## ToDo: ダイレクトメッセージを送る、通知を送るテーブルを作成
 
+[messages] 
+*id {label: "bigint, not null"}
++from_user_id {label: "bigint, not null, FK(users)"}
++to_user_id {label: "bigint, not null, FK(users)"}
+content {label: "text, not null"}
+is_read {label: "boolean, not null, default false"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[message_reactions]
+*id {label: "bigint, not null"}
++message_id {label: "bigint, not null, FK(messages)"}
++user_id {label: "bigint, not null, FK(users)"}
++reaction_code {label: "varchar(100), not null" }
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+
 # Cardinality    Syntax
 # 0 or 1         ?
 # exactly 1      1
