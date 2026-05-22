@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: twitter_postgres
+    environment:
+      POSTGRES_USER: twitter_user # ユーザー名
+      POSTGRES_PASSWORD: password # パスワード
+      POSTGRES_DB: twitter_db # データベース名
+    ports:
+      - "5432:5432" # ホスト:コンテナ
+    volumes:
+      - db-data-twitter:/var/lib/postgresql/data
+
+volumes:
+  db-data-twitter:
