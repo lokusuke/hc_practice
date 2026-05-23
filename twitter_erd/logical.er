@@ -154,7 +154,10 @@ users 1--* follows {label: "follow_user"}
 users 1--* follows {label: "followed_user"}
 
 # 1人のユーザーは複数のユーザーをブロックする
-users 1--* blocks
+users 1--* blocks {label: "block_user"}
+
+# 1人のユーザーは複数のユーザーからブロックされる
+users 1--* blocks {label: "blocked_user"}
 
 # 1人のユーザーは複数のダイレクトメッセージ（またはグループチャット）をする
 users 1--* messages
