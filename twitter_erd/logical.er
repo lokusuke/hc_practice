@@ -86,14 +86,14 @@ deleted_at {label: "datetime, null"}
 
 [chat_groups] {bgcolor: "#f5db49"}
 *id {label: "bigint, not null"}
-group_name {label: "varchar(50), not null" }
+group_name {label: "varchar(50), null" }
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [chat_group_users] {bgcolor: "#f3e9b3"}
 *id {label: "bigint, not null"}
-+chat_group_id {label: "bigint, not null"}
++chat_group_id {label: "bigint, not null, FK(chat_groups)"}
 +user_id {label: "bigint, not null, FK(users)"}
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
@@ -170,6 +170,9 @@ users 1--* chat_group_users
 
 # 1つのグループは複数のユーザーが参加する
 chat_groups 1--* chat_group_users
+
+# 1つのグループには複数のメッセージがある
+chat_groups 1--* messages
 
 # 1人のユーザーは複数の通知の送り手になる
 users 1--* notifications {label: "from_user"}
