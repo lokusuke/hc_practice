@@ -1,0 +1,190 @@
+[users]
+*id {label: "bigint, not null"}
+user_name {label: "varchar(50), not null, uniq"}
+password_hashed {label: "varchar(255), not null"}
+full_name {label: "varchar(100), null"}
+phone_number {label: "varchar(255), null, uniq"}
+email {label: "varchar(255), not null, uniq"}
+location {label: "varchar(255), null"}
+website_url {label: "varchar(255), null"}
+birth_date {label: "date, null"}
+profile_image_url {label: "varchar(255), null"}
+avatar_image_url {label: "varchar(255), null"}
+introduction_message {label: "varchar(200), null"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deactivated_at {label: "datetime, null"}
+
+[tweets] {bgcolor: "#7f9cf3"}
+*id {label: "bigint, not null"}
++from_user_id {label: "bigint, not null, FK(users)"}
++to_user_id {label: "bigint, null, FK(users)"}
++reply_to_id {label: "bigint, null, FK(tweets)"}
+content {label: "varchar(140), not null"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[likes] {bgcolor: "#f5a5ac"}
+*id {label: "bigint, not null"}
++tweet_id {label: "bigint, not null, FK(tweets)"}
++user_id {label: "bigint, not null, FK(users)"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[retweets] {bgcolor: "#94f1a8"}
+*id {label: "bigint, not null"}
++tweet_id {label: "bigint, not null, FK(tweets)"}
++user_id {label: "bigint, not null, FK(users)"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[bookmarks] {bgcolor: "#ccb2f7"}
+*id {label: "bigint, not null"}
++tweet_id {label: "bigint, not null, FK(tweets)"}
++user_id {label: "bigint, not null, FK(users)"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[follows] {bgcolor: "#f1c19a"}
+*id {label: "bigint, not null"}
++follower_id {label: "bigint, not null, FK(users)"}
++followed_id {label: "bigint, not null, FK(users)"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[blocks] {bgcolor: "#aca8a8"}
+*id {label: "bigint, not null"}
++blocker_id {label: "bigint, not null, FK(users)"}
++blocked_id {label: "bigint, not null, FK(users)"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[messages] {bgcolor: "#38ebe2"}
+*id {label: "bigint, not null"}
++chat_group_id {label: "bigint, not null, FK(chat_groups)"}
++user_id {label: "bigint, not null, FK(users)"}
+content {label: "text, not null"}
+is_read {label: "boolean, not null, default false"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[message_reactions] {bgcolor: "#97dad6"}
+*id {label: "bigint, not null"}
++message_id {label: "bigint, not null, FK(messages)"}
++user_id {label: "bigint, not null, FK(users)"}
++reaction_code {label: "varchar(100), not null" } 
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[chat_groups] {bgcolor: "#f5db49"}
+*id {label: "bigint, not null"}
+group_name {label: "varchar(50), null" }
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[chat_group_users] {bgcolor: "#f3e9b3"}
+*id {label: "bigint, not null"}
++chat_group_id {label: "bigint, not null, FK(chat_groups)"}
++user_id {label: "bigint, not null, FK(users)"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[notifications] {bgcolor: "#eb6ae0"}
+*id {label: "bigint, not null"}
++from_user_id {label: "bigint, not null, FK(users)"}
++to_user_id {label: "bigint, not null, FK(users)"}
++tweet_id {label: "bigint, null,  FK(tweets)"}
++action_type_id {label: "bigint, not null, FK(action_types)"}
+is_read {label: "boolean, not null, default false"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+[action_types] {bgcolor: "#ebafe6"}
+*id {label: "bigint, not null"}
+action_name {label: "varchar(50), not null"}
+created_at {label: "datetime, not null"}
+updated_at {label: "datetime, not null"}
+deleted_at {label: "datetime, null"}
+
+# Cardinality    Syntax
+# 0 or 1         ?
+# exactly 1      1
+# 0 or more      *
+# 1 or more      +
+
+# 1人のユーザーは多のツイートをする
+users 1--* tweets
+
+# 1つのツイートには複数のリプライがある（自己参照型）
+tweets 1--* tweets
+
+# 1人のユーザーは複数のいいねをする
+users 1--* likes
+
+# 1つのツイートには複数のいいねがある
+tweets 1--* likes
+
+# 1つのツイートには複数のリツイートがある
+tweets 1--* retweets
+
+# 1人のユーザーは複数のリツイートをする
+users 1--* retweets
+
+# 1つのツイートには複数のブックマークをもつ
+tweets 1--* bookmarks
+
+# 1人のユーザーは複数のブックマークをする
+users 1--* bookmarks
+
+# 1人のユーザーは複数のユーザーをフォローする
+users 1--* follows {label: "following_users"}
+
+# 1人のユーザーは複数のユーザーからフォローされる
+users 1--* follows {label: "followed_by_users"}
+
+# 1人のユーザーは複数のユーザーをブロックする
+users 1--* blocks {label: "blocking_users"}
+
+# 1人のユーザーは複数のユーザーからブロックされる
+users 1--* blocks {label: "blocked_by_users"}
+
+# 1人のユーザーは複数のダイレクトメッセージ（またはグループチャット）をする
+users 1--* messages
+
+# 1人のユーザーは複数のメッセージに対するリアクションをする
+users 1--* message_reactions
+
+# 1つのダイレクトメッセージ（またはグループチャット）は複数のリアクションをもつ
+messages 1--* message_reactions
+
+# 1人のユーザーは複数のグループに所属する
+users 1--* chat_group_users
+
+# 1つのグループは複数のユーザーが参加する
+chat_groups 1--* chat_group_users
+
+# 1つのグループには複数のメッセージがある
+chat_groups 1--* messages
+
+# 1人のユーザーは複数の通知の送り手になる
+users 1--* notifications {label: "from_user"}
+
+# 1人のユーザーは複数の通知の受け手になる
+users 1--* notifications {label: "to_user"}
+
+# 1つのツイートには複数の通知(いいね、リプライ、リツイート、ブックマーク)がある
+tweets 1--* notifications
+
+# 1つの通知タイプには複数の通知がある
+action_types 1--* notifications
