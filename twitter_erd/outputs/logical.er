@@ -52,15 +52,15 @@ deleted_at {label: "datetime, null"}
 [follows] {bgcolor: "#f1c19a"}
 *id {label: "bigint, not null"}
 +follower_id {label: "bigint, not null, FK(users)"}
-+followee_id {label: "bigint, not null, FK(users)"}
++followed_id {label: "bigint, not null, FK(users)"}
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
 
 [blocks] {bgcolor: "#aca8a8"}
 *id {label: "bigint, not null"}
-+user_id {label: "bigint, not null, FK(users)"}
-+blocked_user_id {label: "bigint, not null, FK(users)"}
++blocker_id {label: "bigint, not null, FK(users)"}
++blocked_id {label: "bigint, not null, FK(users)"}
 created_at {label: "datetime, not null"}
 updated_at {label: "datetime, not null"}
 deleted_at {label: "datetime, null"}
@@ -148,16 +148,16 @@ tweets 1--* bookmarks
 users 1--* bookmarks
 
 # 1人のユーザーは複数のユーザーをフォローする
-users 1--* follows {label: "follow_user"}
+users 1--* follows {label: "following_users"}
 
 # 1人のユーザーは複数のユーザーからフォローされる
-users 1--* follows {label: "followed_user"}
+users 1--* follows {label: "followed_by_users"}
 
 # 1人のユーザーは複数のユーザーをブロックする
-users 1--* blocks {label: "block_user"}
+users 1--* blocks {label: "blocking_users"}
 
 # 1人のユーザーは複数のユーザーからブロックされる
-users 1--* blocks {label: "blocked_user"}
+users 1--* blocks {label: "blocked_by_users"}
 
 # 1人のユーザーは複数のダイレクトメッセージ（またはグループチャット）をする
 users 1--* messages
